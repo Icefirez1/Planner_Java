@@ -1,10 +1,8 @@
 
+import java.text.DateFormat;
 import java.util.Date;
-import java.io.Serializable;
-public class Task implements Serializable
+public class Task
 {
-    //default serialVersion id
-    private static final long serialVersionUID = 1L;
     
     //Chore and due date of task
     private String chore; 
@@ -25,10 +23,11 @@ public class Task implements Serializable
     //figure this out some other day
     // Im trying to implement so that they can add the task to another day
     // mabye instead of them typing I have them do it through like a wheel
-    public Task(String toDo, Date dateDue)
+    public Task(String toDo, String dateDue)
     {
         this.chore = toDo;
-        this.dueDate = dateDue;
+        // fix this
+        // this.dueDate = DateFormat.parse(dateDue);
     }
     /**
      * Changes task
@@ -46,6 +45,14 @@ public class Task implements Serializable
     {
         this.dueDate = newDate;
     }
+    public String getTask()
+    {
+        return this.chore;
+    }
+    public String getDate()
+    {
+        return this.dueDate.toString();
+    }
 
 
     public String toString()
@@ -57,5 +64,6 @@ public class Task implements Serializable
         
         Task stuff = new Task("yuh"); 
         System.out.println(stuff);
+
     }
 }
