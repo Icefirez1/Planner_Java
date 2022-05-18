@@ -4,7 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Changer 
@@ -14,9 +17,25 @@ public class Changer
     {
 
     }   
-    public static void CSVToTask()
+    public static ObservableList<Task> CSVToTask() throws ParseException
     {
+        ArrayList<String[]> data = null;
+        try {
+            data = CSVLoader.loadCSV("stuff.csv");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        ObservableList<Task> items = FXCollections.observableArrayList(); 
+
+        if (data != null) {
+            for (String[] row : data) {
+                items.add(new Task(row[0], row[1]));
+            }
+        }
+        return items;
         
+
     }
     public static void writeToCSV(ObservableList<Task> productList)
     {

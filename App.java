@@ -1,3 +1,5 @@
+import java.text.ParseException;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +19,11 @@ public class App extends Application
     private ObservableList items = FXCollections.observableArrayList(); 
     private ListView<Task> toDoList; 
 
+    @Override
+    public void init() throws ParseException
+    {
+        items = Changer.CSVToTask();
+    }
     @Override
     public void start(Stage primary)
     {

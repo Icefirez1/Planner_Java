@@ -1,5 +1,7 @@
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Task
 {
@@ -23,11 +25,13 @@ public class Task
     //figure this out some other day
     // Im trying to implement so that they can add the task to another day
     // mabye instead of them typing I have them do it through like a wheel
-    public Task(String toDo, String dateDue)
+    public Task(String toDo, String dateDue) throws ParseException
     {
         this.chore = toDo;
         // fix this
         // this.dueDate = DateFormat.parse(dateDue);
+        DateFormat dateFormat = new SimpleDateFormat ();
+        this.dueDate = dateFormat.parse(dateDue);
     }
     /**
      * Changes task
