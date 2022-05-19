@@ -8,19 +8,19 @@ public class Task
     
     //Chore and due date of task
     private String chore; 
-    private Date dueDate;
+    private String dueDate;
     /**
      * Constructors
      */
     public Task()
     {
         this.chore = "none";
-        this.dueDate = new Date();
+        this.dueDate = new Date().toString();
     }
     public Task(String toDo)
     {
         this.chore = toDo;
-        this.dueDate = new Date();
+        this.dueDate = new Date().toString();
     }
     //figure this out some other day
     // Im trying to implement so that they can add the task to another day
@@ -30,8 +30,7 @@ public class Task
         this.chore = toDo;
         // fix this
         // this.dueDate = DateFormat.parse(dateDue);
-        DateFormat dateFormat = new SimpleDateFormat ();
-        this.dueDate = dateFormat.parse(dateDue);
+        this.dueDate = dateDue;
     }
     /**
      * Changes task
@@ -47,7 +46,7 @@ public class Task
      */
     public void changeDate(Date newDate)
     {
-        this.dueDate = newDate;
+        this.dueDate = newDate.toString();
     }
     public String getTask()
     {
