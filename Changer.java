@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,7 +22,17 @@ public class Changer
     {
         ArrayList<String[]> data = null;
         try {
-            data = CSVLoader.loadCSV("stuff.csv");
+            File newFile = new File("stuff.csv");
+
+            System.out.println(newFile.length());
+            if (newFile.length() != 0) 
+            {
+                data = CSVLoader.loadCSV("stuff.csv");
+            } 
+            else
+            {
+                System.out.println("nothing there");
+            }
         }
         catch (Exception ex) {
             ex.printStackTrace();
